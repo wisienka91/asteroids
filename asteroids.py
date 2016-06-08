@@ -44,7 +44,7 @@ class Ship(object):
         self.velocity = [velocity[0], velocity[1]]
         self.angle = angle
 
-        self.ship_image_info = ImageInfo([45, 45], [90, 90], 35) 
+        self.ship_image_info = ImageInfo([45, 45], [90, 90], 35)
         self.missile_info = ImageInfo([5,5], [10, 10], 3, 50)
         self.missile_image = simplegui.load_image(
             MEDIA_HOST + 'lathrop/shot2.png')
@@ -78,7 +78,7 @@ class Ship(object):
             current_center, angle = self.adjust_center_and_angle()
         canvas.draw_image(
             self.image, current_center, self.image_size,
-            (self.position[0] % WIDTH, self.position[1] % HEIGHT), 
+            (self.position[0] % WIDTH, self.position[1] % HEIGHT),
             self.image_size, angle
         )
 
@@ -207,7 +207,7 @@ class Asteroids(object):
         self.started = False
         self.score = 0
         self.time = 0.5
-        self.max_rock_velocity = 10   
+        self.max_rock_velocity = 10
         self.points_to_velocity_map = {
             20: 13, 30: 17, 40: 21, 50: 25, 60: 29, 70: 33, 80: 37,
             90: 41, 100: 45
@@ -259,7 +259,7 @@ class Asteroids(object):
             self.my_ship.angle_velocity = 0
         elif key == simplegui.KEY_MAP['up']:
             self.my_ship.thrust = False
-            self.ship_thrust_sound.pause() 
+            self.ship_thrust_sound.pause()
             self.ship_thrust_sound.rewind()
 
     def splash_clicked(self, coords):
@@ -296,7 +296,7 @@ class Asteroids(object):
             exploding_object.get_position(), (0, 0), 0, 0, explosion_image,
             self.explosion_info, self.explosion_sound
         )
-        self.explosion_group.add(new_explosion)        
+        self.explosion_group.add(new_explosion)
 
     def group_collide_object(self, group, other_object):
         collide = False
@@ -335,7 +335,7 @@ class Asteroids(object):
             position, velocity, 0, angle_velocity, self.asteroid_image,
             self.asteroid_info
         )
-        self.rock_group.add(new_rock)                
+        self.rock_group.add(new_rock)
 
     def can_spawn(self, position):
         ship_position = self.my_ship.get_position()
@@ -349,9 +349,9 @@ class Asteroids(object):
                 self.spawn_a_rock(position, velocity, angle_velocity)
 
     def stats_draw(self, canvas):
-        canvas.draw_text('Lives:', (50, 50), 24, 'White')  
+        canvas.draw_text('Lives:', (50, 50), 24, 'White')
         canvas.draw_text('Score:', (WIDTH - 150, 50), 24, 'White')
-        canvas.draw_text(str(self.lives), (50, 80), 24, 'White')  
+        canvas.draw_text(str(self.lives), (50, 80), 24, 'White')
         canvas.draw_text(str(self.score), (WIDTH - 150, 80), 24, 'White')
 
     def background_draw(self, canvas):
@@ -359,7 +359,7 @@ class Asteroids(object):
         debris_center = self.debris_info.get_center()
         debris_size = self.debris_info.get_size()
         canvas.draw_image(
-            self.nebula_image, self.nebula_info.get_center(), 
+            self.nebula_image, self.nebula_info.get_center(),
             self.nebula_info.get_size(), (WIDTH / 2, HEIGHT / 2),
             (WIDTH, HEIGHT)
         )
@@ -395,7 +395,7 @@ class Asteroids(object):
 
     def draw(self, canvas):
         self.time += 1
-        self.background_draw(canvas)    
+        self.background_draw(canvas)
 
         self.my_ship.draw(canvas)
         self.my_ship.update()
